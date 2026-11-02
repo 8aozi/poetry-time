@@ -1,0 +1,21 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 360" fill="none">
+<defs><linearGradient id="hill" x1="270" y1="180" x2="320" y2="360" gradientUnits="userSpaceOnUse"><stop stop-color="#9db79a"/><stop offset="1" stop-color="#c5d4ae"/></linearGradient><linearGradient id="paper" x1="200" y1="180" x2="330" y2="310" gradientUnits="userSpaceOnUse"><stop stop-color="#fffef5"/><stop offset="1" stop-color="#ede9d4"/></linearGradient></defs>
+<circle cx="434" cy="96" r="48" fill="#edc975" opacity=".8"/><circle cx="434" cy="96" r="62" stroke="#e8d5a0" stroke-dasharray="2 8"/>
+<path d="M287 89h53c18 0 13-17 1-17-3-17-29-16-33 0-15-5-23 8-21 17ZM474 163h65c19 0 15-19 0-18-5-20-33-18-37 0-15-6-28 7-28 18Z" fill="#fffdf3" opacity=".8"/>
+<path d="M72 302c83-56 107-133 162-125 64 8 86 87 139 63 54-23 67-55 112-39 45 16 94 79 115 98v61H72Z" fill="#d1dbc0"/>
+<path d="M110 329c56-23 93-104 157-95 44 7 59 41 101 18 72-39 145-18 232 56v52H110Z" fill="url(#hill)"/>
+<path d="M393 271c70-18 117-14 207 30v59H300c31-27 48-59 93-89Z" fill="#b4c8b6"/>
+<path d="M463 285c-55 23-20 37 40 46 40 6 40 18 6 29" stroke="#edf0d8" stroke-width="17"/>
+<path d="m410 162 13 20 17-24M450 197l9 13 12-17" stroke="#6c8875" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+<ellipse cx="272" cy="319" rx="139" ry="15" fill="#698b70" opacity=".13"/>
+<path d="m125 259 134 54 147-44-18-98-122 32-115-44Z" fill="#406c59"/><path d="m131 253 128 50 142-40-17-100-119 31-113-41Z" fill="#d2d4b8"/>
+<path d="M265 190c-34-38-78-43-116-41l-18 96c43 1 87 22 128 51 43-24 91-38 140-40l-17-99c-46-5-84 8-117 33Z" fill="url(#paper)"/>
+<path d="m265 190-6 106" stroke="#d9d8c2" stroke-width="2"/>
+<path d="m174 178 52 20m-56-6 62 25m-64-10 61 25m-65-10 47 21m78-39 66-18m-67 34 70-20m-71 35 72-21m-71 36 53-15" stroke="#b3b99b" stroke-width="3" stroke-linecap="round" opacity=".7"/>
+<path d="m295 185-2 45 13-11 8 7-4-49" fill="#d49274"/>
+<path d="M167 278c-9-53-42-78-54-113m36 74c-34-1-45-20-40-30 24-3 33 14 40 30Zm-16-40c12-26 7-45-2-46-17 14-14 30 2 46Zm-19-30c-25-3-33-17-30-27 19 0 29 12 30 27Z" fill="#6f9471"/><path d="M167 278c-9-53-42-78-54-113" stroke="#64866b" stroke-width="3"/>
+<path d="M416 300c4-20 10-33 23-46m-18 27c-10-13-10-24-2-28 12 6 10 16 2 28Zm11-18c14-2 20-10 16-17-13 0-16 8-16 17Z" fill="#537e67"/>
+<g fill="#d39981"><ellipse cx="97" cy="239" rx="6" ry="13" transform="rotate(-27 97 239)"/><ellipse cx="91" cy="248" rx="6" ry="13" transform="rotate(-80 91 248)"/><ellipse cx="109" cy="248" rx="6" ry="13" transform="rotate(60 109 248)"/></g><circle cx="100" cy="248" r="5" fill="#f4d580"/>
+<path d="m336 112 3 8 8 3-8 3-3 8-3-8-8-3 8-3 3-8Z" fill="#c3a656"/>
+<g fill="#f7efd5"><circle cx="478" cy="265" r="3"/><circle cx="505" cy="278" r="3"/><circle cx="459" cy="254" r="2"/></g>
+</svg>

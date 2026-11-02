@@ -1,0 +1,53 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#f7f8f2">
+  <meta name="description" content="诗词拾光，陪孩子读懂75篇小学古诗词。支持搜索、逐句释义和字上拼音，本地离线可用。">
+  <title>诗词拾光 · 小小诗人，大大世界</title>
+  <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="styles.css">
+  <script src="data/poems.js" defer></script>
+  <script src="learning-store.js" defer></script>
+  <script src="practice.js" defer></script>
+  <script src="practice-ui.js" defer></script>
+  <script src="app.js" defer></script>
+</head>
+<body>
+  <a class="skip-link" href="#main">跳到主要内容</a>
+  <svg class="icon-definitions" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><defs>
+    <symbol id="i-book" viewBox="0 0 24 24"><path d="M12 6c-3-2-6-2-9-1v14c3-1 6-1 9 1 3-2 6-2 9-1V5c-3-1-6-1-9 1Zm0 0v14M6 9l3 1m-3 3 3 1m6-4 3-1m-3 5 3-1"/></symbol>
+    <symbol id="i-search" viewBox="0 0 24 24"><circle cx="10.5" cy="10.5" r="6.5"/><path d="m16 16 5 5"/></symbol>
+    <symbol id="i-arrow" viewBox="0 0 24 24"><path d="M4 12h15m-6-6 6 6-6 6"/></symbol>
+    <symbol id="i-spark" viewBox="0 0 24 24"><path d="m12 3 2.5 6.5L21 12l-6.5 2.5L12 21l-2.5-6.5L3 12l6.5-2.5L12 3Z"/></symbol>
+    <symbol id="i-leaf" viewBox="0 0 24 24"><path d="M20 3C9 2 3 7 5 14c2 7 15 5 15-11ZM3 21 15 9M8 16v-5m0 5h5"/></symbol>
+    <symbol id="i-sun" viewBox="0 0 24 24"><circle cx="12" cy="12" r="4"/><path d="M12 2v2m0 16v2M2 12h2m16 0h2M5 5l1.5 1.5m11 11L19 19M5 19l1.5-1.5m11-11L19 5"/></symbol>
+    <symbol id="i-help" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M9 9a3 3 0 0 1 6 0c0 2-3 2-3 5m0 3h.01"/></symbol>
+    <symbol id="i-close" viewBox="0 0 24 24"><path d="m6 6 12 12M18 6 6 18"/></symbol>
+    <symbol id="i-chevron" viewBox="0 0 24 24"><path d="m9 5 7 7-7 7"/></symbol>
+    <symbol id="i-moon" viewBox="0 0 24 24"><path d="M20 15A9 9 0 0 1 9 3a9 9 0 1 0 11 12Z"/></symbol>
+    <symbol id="i-flower" viewBox="0 0 24 24"><path d="M12 8C5-2 0 8 8 12c-10 7 0 12 4 4 7 10 12 0 4-4 10-7 0-12-4-4Z"/><circle cx="12" cy="12" r="2"/></symbol>
+    <symbol id="i-mountain" viewBox="0 0 24 24"><path d="m2 20 8-15 5 9 3-5 5 11H2Zm5-9 3 2 2-3"/></symbol>
+    <symbol id="i-waves" viewBox="0 0 24 24"><path d="M2 7c3-4 6 4 10 0s7 4 10 0M2 12c3-4 6 4 10 0s7 4 10 0M2 17c3-4 6 4 10 0s7 4 10 0"/></symbol>
+    <symbol id="i-heart" viewBox="0 0 24 24"><path d="M20.5 5.5a5 5 0 0 0-7 0L12 7l-1.5-1.5a5 5 0 0 0-7 7L12 21l8.5-8.5a5 5 0 0 0 0-7Z"/></symbol>
+    <symbol id="i-check" viewBox="0 0 24 24"><path d="m5 12 4 4L19 6"/><circle cx="12" cy="12" r="10"/></symbol>
+    <symbol id="i-clock" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 6v6l4 2"/></symbol>
+  </defs></svg>
+  <aside class="sidebar" aria-label="主导航">
+    <a class="brand" href="#" aria-label="诗词拾光首页"><span class="brand-icon"><svg><use href="#i-book"/></svg></span><span><b>诗词拾光</b><small>把诗意，装进口袋</small></span></a>
+    <div class="sidebar-main"><p class="nav-label">我的诗意小天地</p><a class="nav-item active" href="#" id="library-nav"><svg class="icon"><use href="#i-book"/></svg>诗词小书屋<span>75</span></a>
+    <a class="nav-item" href="#view=favorites" id="favorites-nav"><svg class="icon"><use href="#i-heart"/></svg>我的收藏<span id="favorite-count">0</span></a>
+    <a class="nav-item" href="#view=learning" id="learning-nav"><svg class="icon"><use href="#i-leaf"/></svg>正在学习<span id="learning-count">0</span></a>
+    <a class="nav-item" href="#view=learned" id="learned-nav"><svg class="icon"><use href="#i-check"/></svg>已学诗词<span id="learned-count">0</span></a>
+    <a class="nav-item" href="#view=practice" id="practice-nav"><svg class="icon"><use href="#i-spark"/></svg>诗词小挑战<span id="practice-stars">0</span></a>
+    <a class="nav-item" href="#view=mistakes" id="mistakes-nav"><svg class="icon"><use href="#i-book"/></svg>我的错题本<span id="mistake-count">0</span></a>
+    <div class="sidebar-note"><span class="note-spark">✧</span><p>读一首诗，<br>看见一个新世界。</p><div class="note-hill" aria-hidden="true"><span></span><i></i><b></b></div></div></div>
+    <button class="help-button" id="help-button"><svg class="icon"><use href="#i-help"/></svg>小书屋使用指南</button>
+    <div class="sidebar-footer"><span class="status-dot"></span>小小诗人，从这里出发</div>
+  </aside>
+  <div class="app-body"><header class="topbar"><div class="breadcrumb" id="breadcrumb">我的小书屋 <span>/</span> <strong>发现诗词</strong></div><div class="topbar-right"><svg class="icon"><use href="#i-sun"/></svg><span>今天，也和诗词做朋友</span><div class="avatar" aria-label="小诗人">诗</div></div></header><main id="main" tabindex="-1"></main><footer class="page-footer"><span>诗词拾光 <i>·</i> 陪你慢慢读，慢慢长大</span><span>小学古诗词 75 篇 · 2022 版语文课标</span></footer></div>
+  <dialog id="help-dialog" aria-labelledby="help-title"><button class="dialog-close icon-button" id="close-help" aria-label="关闭指南"><svg class="icon"><use href="#i-close"/></svg></button><span class="eyebrow">欢迎来到小书屋</span><h2 id="help-title">和诗词交朋友，只需三步</h2><ol class="help-steps"><li><b>找一找</b><p>输入诗名、作者或记得的一句诗。也可以翻页浏览全部 75 篇。</p></li><li><b>读一读</b><p>点击诗词卡片，跟着汉字上方的拼音读。认识字以后，可以关掉拼音试一试。</p></li><li><b>想一想</b><p>点击诗句，右侧会显示对应的白话解释；“字词小锦囊”帮你认识难懂的词。</p></li></ol><p class="help-records">喜欢的诗可以点爱心收藏。阅读页可标记“正在学习”或“已学习”，记录时间并更新进度；误点可改回“未标记”。记录只保存在当前浏览器，清除网站数据会删除记录，不会跨设备同步。</p><p class="help-records">在“诗词小挑战”中选择上下句、填写字词，每题首次答对得 1 颗星星。答错的诗会进入“我的错题本”，再次答对对应题目即可订正。也可以从阅读页练习当前诗词。练习奖励不自动改变学习进度。</p><p class="help-source">篇目依据教育部《义务教育语文课程标准（2022年版）》附录 1“1～6 年级（75 篇）”。释义为面向儿童编写的白话解释。拼音采用现代普通话本调，“一”“不”不标口语变调。<a href="https://www.moe.gov.cn/srcsite/A26/s8001/202204/W020220420582344386456.pdf" target="_blank" rel="noopener noreferrer">查看课标原文 ↗</a></p><button class="primary-button" id="start-reading">我知道啦，开始读诗</button></dialog>
+  <div class="celebration-toast" id="learning-toast" role="status" aria-live="polite" hidden></div>
+  <div class="sr-only" id="announcer" role="status" aria-live="polite"></div>
+</body></html>
