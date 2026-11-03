@@ -1,0 +1,60 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>听一首小诗 · 诗词拾光试听</title>
+<style>
+:root{color-scheme:light;--ink:#2e4439;--green:#436b57;--muted:#6c796e;--line:#e0e6d8}*{box-sizing:border-box}body{margin:0;padding:40px 18px;background:#f6f7ef;color:var(--ink);font-family:"PingFang SC","Microsoft YaHei",system-ui,sans-serif}main{max-width:660px;margin:auto}a{color:var(--green)}.brand{font-size:13px;letter-spacing:2px}.eyebrow{font-size:12px;color:var(--green);letter-spacing:2px}header{margin:32px 0 23px}h1{font-size:30px;font-family:"Songti SC",serif;margin:12px 0}header p{font-size:14px;color:var(--muted);line-height:1.9}.paper{background:#fffefa;border:1px solid var(--line);border-radius:24px;padding:32px;box-shadow:0 12px 38px #35482b08}.poem-heading{text-align:center;margin-bottom:22px}.poem-heading h2{font-family:"Songti SC",serif;font-size:31px;letter-spacing:5px;margin:6px 0 10px}.poem-heading p{font-size:13px;color:var(--muted)}button{font:inherit;cursor:pointer;border:0;touch-action:manipulation}button:focus-visible,a:focus-visible,input:focus-visible,audio:focus-visible{outline:3px solid #bc914d;outline-offset:4px}.verse{display:flex;align-items:center;justify-content:center;gap:12px;border-radius:12px;padding:6px;margin:6px 0;transition:background .2s}.verse.active{background:#edf3e5}.verse p{font-family:"Songti SC",serif;font-size:26px;letter-spacing:3px;margin:8px 0;line-height:1.8}.line-play{width:44px;height:44px;border-radius:50%;background:#eff3e8;color:var(--green);flex-shrink:0}.line-play:hover{background:#e1ebd5}.line-play svg{width:19px;height:19px;vertical-align:middle;fill:currentColor}.player{border-top:1px solid var(--line);margin-top:26px;padding-top:23px}.controls{display:flex;flex-wrap:wrap;gap:10px;align-items:center}.primary,.secondary{min-height:46px;border-radius:12px;padding:10px 18px;font-size:14px}.primary{background:var(--green);color:#fff}.secondary{background:#edf1e7;color:var(--green)}fieldset{border:0;padding:0;margin:19px 0 12px;display:flex;flex-wrap:wrap;gap:12px;font-size:13px}legend{padding:0;margin-bottom:10px;font-size:12px;color:var(--muted)}label{display:flex;gap:5px;align-items:center;min-height:36px;padding:4px 10px;background:#f3f4ed;border-radius:8px;cursor:pointer}input{accent-color:var(--green)}audio{width:100%;height:44px;margin:6px 0}#status{font-size:13px;color:var(--green);line-height:1.7;min-height:23px;margin:12px 0 0}.note{font-size:12px;color:var(--muted);line-height:1.9;margin:20px 6px}.note strong{font-weight:600;color:#53654e}footer{font-size:12px;color:var(--muted);text-align:center;margin:26px 0 4px}@media(max-width:420px){body{padding:24px 14px}.paper{padding:25px 16px}h1{font-size:27px}.verse{gap:3px}.verse p{font-size:24px;letter-spacing:1px}.line-play{width:44px}.controls{justify-content:center}}@media(prefers-reduced-motion:reduce){*{transition:none!important}}
+</style>
+</head>
+<body>
+<main>
+<span class="brand">诗词拾光 · 独立实验室</span>
+<p class="note"><strong>人工 Review 结论：效果不理想，本方案不集成到项目。</strong><br>试听反馈：声音偏机械，真实感和标准示范效果不足。此页仅保留作本地实验记录。</p>
+<header><span class="eyebrow">TASK 4 · 已结束的朗读尝试</span><h1>先听一听，再轻轻跟着读。</h1><p>试试这份温和的普通话读音。喜欢怎样的节奏，由你来选。</p></header>
+<section class="paper" aria-labelledby="poem-title">
+<div class="poem-heading"><h2 id="poem-title">静夜思</h2><p>唐 · 李白</p></div>
+<div id="verses">
+<div class="verse" data-line="0"><p>床前明月光，</p><button class="line-play" data-clip="line-1.wav" aria-label="播放第一句：床前明月光"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 4v16l14-8z"/></svg></button></div>
+<div class="verse" data-line="1"><p>疑是地上霜。</p><button class="line-play" data-clip="line-2.wav" aria-label="播放第二句：疑是地上霜"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 4v16l14-8z"/></svg></button></div>
+<div class="verse" data-line="2"><p>举头望明月，</p><button class="line-play" data-clip="line-3.wav" aria-label="播放第三句：举头望明月"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 4v16l14-8z"/></svg></button></div>
+<div class="verse" data-line="3"><p>低头思故乡。</p><button class="line-play" data-clip="line-4.wav" aria-label="播放第四句：低头思故乡"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 4v16l14-8z"/></svg></button></div>
+</div>
+<div class="player">
+<div class="controls"><button class="primary" id="play-all">▶ 听整首诗</button><button class="secondary" id="stop">■ 停下来</button></div>
+<fieldset><legend>选择朗读节奏</legend><label><input type="radio" name="speed" value="1" checked>轻轻读 · 原速</label><label><input type="radio" name="speed" value="0.85">慢慢跟读 · 0.85 倍</label></fieldset>
+<audio id="audio" controls preload="metadata" src="poem.wav" aria-label="诗词朗读播放器"></audio>
+<p id="status" role="status" aria-live="polite">准备好啦，点「听整首诗」开始。</p>
+</div>
+</section>
+<p class="note"><strong>这次只试听一首。</strong>音色是这台 Mac 自带的“婷婷”普通话合成语音，已生成本地样例，打开页面即可播放。全诗每句之间留有短暂停顿，慢速播放尽量保持原音高。此处为合成试听，尚未经过教师审听。</p>
+<footer>听听声音是否自然、吐字是否清楚、速度是否适合跟读。</footer>
+</main>
+<script>
+(() => {
+ const audio=document.querySelector('#audio'), status=document.querySelector('#status');
+ const rows=[...document.querySelectorAll('.verse')];
+ let selected=-1, label='《静夜思》全诗', request=0, stopped=false;
+ const speed=()=>Number(document.querySelector('input[name="speed"]:checked').value);
+ function clear(){rows.forEach(row=>row.classList.remove('active'));}
+ function setRate(){audio.playbackRate=speed();audio.preservesPitch=true;}
+ async function play(file,index,title){
+  const id=++request;audio.pause();clear();stopped=false;selected=index;label=title;
+  audio.src=file;setRate();status.textContent='正在准备声音…';
+  try{await audio.play();}catch(e){if(id===request&&e.name!=='AbortError')status.textContent='暂时没能播放，请再点一次，或用 Safari / Chrome 打开试听页。';}
+ }
+ document.querySelector('#play-all').onclick=()=>play('poem.wav',-1,'《静夜思》全诗');
+ document.querySelectorAll('[data-clip]').forEach((b,i)=>b.onclick=()=>play(b.dataset.clip,i,`第 ${i+1} 句`));
+ document.querySelector('#stop').onclick=()=>{++request;stopped=true;audio.pause();audio.currentTime=0;clear();status.textContent='停下来啦，想听时可以重新开始。';};
+ document.querySelectorAll('[name="speed"]').forEach(r=>r.onchange=setRate);
+ audio.addEventListener('loadedmetadata',setRate);
+ audio.addEventListener('playing',()=>{stopped=false;clear();if(selected>=0)rows[selected].classList.add('active');status.textContent=`正在听：${label}。你也可以轻轻跟着读。`;});
+ audio.addEventListener('pause',()=>{if(!audio.ended&&!stopped){clear();status.textContent='已暂停，点播放器的播放键继续听。';}});
+ audio.addEventListener('ended',()=>{clear();status.textContent='听完啦！再读一遍，你会发现新的诗意。';});
+ audio.addEventListener('error',()=>{clear();status.textContent='声音没有加载成功，请刷新页面后再试。';});
+ window.addEventListener('pagehide',()=>audio.pause());
+})();
+</script>
+</body>
+</html>

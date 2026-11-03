@@ -1,0 +1,3 @@
+# Generated locally from the operating system voice; do not redistribute recordings.
+*.wav
+__pycache__/

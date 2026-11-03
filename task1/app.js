@@ -9,7 +9,7 @@
   const icon = (name, extra = '') => `<svg class="icon ${extra}" aria-hidden="true"><use href="#i-${name}"/></svg>`;
   let query = '', page = 1, currentPoem = null, activeLine = 0, activeTab = 'translation', view = 'all';
   const viewLabels = {all: '诗词小书屋', favorites: '我的收藏', learning: '正在学习', learned: '已学诗词', practice: '诗词小挑战', mistakes: '我的错题本'};
-  const statusLabels = {unstarted: '未标记', learning: '正在学习', learned: '已学习'};
+  const statusLabels = {unstarted: '还没学', learning: '正在学习', learned: '已学习'};
   let storage;
   try { storage = window.localStorage; } catch { storage = null; }
   const learning = window.PoetryLearning.createStore(poems.map(p => p.id), storage);
@@ -88,7 +88,7 @@
     document.title = '诗词拾光 · 小小诗人，大大世界';
     breadcrumb.innerHTML = `我的小书屋 <span>/</span> <strong>${viewLabels[view]}</strong>`;
     main.className = '';
-    main.innerHTML = `<section class="page-heading"><div><h1>小小诗人，你好呀 <em>✧</em></h1><p>让每一次翻阅，都遇见一点诗意。</p></div><div class="chapter-badge">${icon('leaf')}75 篇好诗 · 等你来读</div></section><div id="progress-panel">${progressPanel()}</div><section class="hero" aria-labelledby="hero-title"><div class="hero-copy"><span class="eyebrow">${icon('spark')}在诗词里，慢慢长大</span><h2 id="hero-title">读一首小诗，<br>发现<span>大大的世界。</span></h2><p>跟着拼音轻轻读，把古人的心情变成自己的小发现。</p><a class="primary-button" href="${url('poem-10')}">一起读《春晓》${icon('arrow')}</a></div><img class="hero-art" src="assets/spring-garden.svg" alt="" width="600" height="360"><span class="hero-stamp" aria-hidden="true">诗意萌芽</span></section><section class="library-section" id="library-section" aria-labelledby="library-heading"><div class="section-heading"><h2 id="library-heading">${icon(view === 'favorites' ? 'heart' : 'book')}${viewLabels[view]}</h2><small>读诗的快乐，从这里开始</small></div><form class="search-row" id="search-form" role="search"><div class="search-box">${icon('search')}<label class="sr-only" for="search-input">搜索诗名、作者或诗句</label><input id="search-input" name="q" type="search" placeholder="搜一搜诗名、作者，或记得的诗句…" autocomplete="off" maxlength="100" value="${escape(query)}"><button class="clear-search" id="clear-search" type="button" aria-label="清空搜索" ${!query?'hidden':''}>${icon('close')}</button><button class="primary-button" type="submit">找一找</button></div><span class="search-hint">${icon('leaf')}总有一首，与你相遇</span></form><div class="quick-search"><span>试着搜搜</span><button data-query="春">春天的诗</button><button data-query="李白">李白</button><button data-query="月">月亮</button><button data-query="">全部诗词</button></div><div class="results-meta"><span id="results-meta-text"></span><span class="view-label"><span class="tiny-grid" aria-hidden="true"><i></i><i></i><i></i><i></i></span>按课标篇目排列</span></div><div class="poem-grid" id="poem-grid"></div><nav class="pagination" id="pagination" aria-label="诗词列表分页"></nav></section>`;
+    main.innerHTML = `<section class="page-heading heading-with-summary library-heading"><div><h1>小诗人，你好呀 <em>✧</em></h1><p>让每一次翻阅，都遇见一点诗意。</p></div><div id="progress-panel">${progressPanel(true)}</div></section>${view === 'all' ? `<section class="hero" aria-labelledby="hero-title"><div class="hero-copy"><span class="eyebrow">${icon('spark')}在诗词里，慢慢长大</span><h2 id="hero-title">读一首小诗，<br>发现<span>大大的世界。</span></h2><p>跟着拼音轻轻读，把古人的心情变成自己的小发现。</p><a class="primary-button" href="${url('poem-10')}">一起读《春晓》${icon('arrow')}</a></div><img class="hero-art" src="assets/spring-garden.svg" alt="" width="600" height="360"><span class="hero-stamp" aria-hidden="true">诗意萌芽</span></section>` : ''}<section class="library-section" id="library-section" aria-labelledby="library-heading"><div class="section-heading"><h2 id="library-heading">${icon(view === 'favorites' ? 'heart' : 'book')}${viewLabels[view]}</h2><small>读诗的快乐，从这里开始</small></div><form class="search-row" id="search-form" role="search"><div class="search-box">${icon('search')}<label class="sr-only" for="search-input">搜索诗名、作者或诗句</label><input id="search-input" name="q" type="search" placeholder="搜一搜诗名、作者，或记得的诗句…" autocomplete="off" maxlength="100" value="${escape(query)}"><button class="clear-search" id="clear-search" type="button" aria-label="清空搜索" ${!query?'hidden':''}>${icon('close')}</button><button class="primary-button" type="submit">找一找</button></div><span class="search-hint">${icon('leaf')}总有一首，与你相遇</span></form><div class="quick-search"><span>试着搜搜</span><button data-query="春">春天的诗</button><button data-query="李白">李白</button><button data-query="月">月亮</button><button data-query="">全部诗词</button></div><div class="results-meta"><span id="results-meta-text"></span><span class="view-label"><span class="tiny-grid" aria-hidden="true"><i></i><i></i><i></i><i></i></span>按课标篇目排列</span></div><div class="poem-grid" id="poem-grid"></div><nav class="pagination" id="pagination" aria-label="诗词列表分页"></nav></section>`;
     document.querySelector('#search-form').addEventListener('submit', event => {event.preventDefault();search(document.querySelector('#search-input').value);});
     document.querySelector('#search-input').addEventListener('input', event => { if (!event.isComposing) search(event.target.value); });
     document.querySelector('#search-input').addEventListener('compositionend', event => search(event.target.value));
@@ -153,14 +153,14 @@
     const r = learning.get(poem.id);
     return `<button class="favorite-button ${r.favorite ? 'is-favorite' : ''} ${compact ? 'compact' : ''}" data-favorite="${poem.id}" aria-pressed="${r.favorite}" aria-label="${r.favorite ? '取消收藏' : '收藏'}《${escape(poem.title)}》">${icon('heart')}<span>${r.favorite ? '已收藏' : '收藏'}</span></button>`;
   }
-  function progressPanel() {
+  function progressPanel(compact = false) {
     const stats = learning.summary(), pct = Math.round(stats.learned / stats.total * 100);
-    return `<section class="growth-panel" aria-label="我的学习进度"><div class="growth-title">${icon('leaf')}<div><b>我的诗意足迹</b><p>${stats.learned === stats.total ? '75 篇小诗，都留下了你的足迹。再读一遍，也会有新发现！' : stats.learned ? '每学会一首，心里就多开一朵小花。' : '从一首开始，慢慢读，也能走很远。'}</p></div></div><div class="growth-meter"><div class="growth-count"><span>已学习 <strong>${stats.learned} / ${stats.total}</strong> 篇</span><span>${pct}%</span></div><progress max="${stats.total}" value="${stats.learned}" aria-label="已学习诗词进度">${stats.learned} / ${stats.total}</progress><div class="growth-caption"><span>正在学习 ${stats.learning} 篇</span><span>收藏 ${stats.favorites} 篇</span></div></div></section><p class="storage-note ${learning.warning ? 'storage-warning' : ''}">${learning.warning || '足迹保存在当前浏览器 · 清除网站数据会删除记录 · 不跨设备同步'}</p>`;
+    return `<section class="growth-panel ${compact ? 'growth-compact' : ''}" aria-label="我的学习进度"><div class="growth-title">${icon('leaf')}<div><b>我的诗意足迹</b><p>${stats.learned === stats.total ? '75 篇小诗，都留下了你的足迹。再读一遍，也会有新发现！' : stats.learned ? '每学会一首，心里就多开一朵小花。' : '从一首开始，慢慢读，也能走很远。'}</p></div></div><div class="growth-meter"><div class="growth-count"><span>已学习 <strong>${stats.learned} / ${stats.total}</strong> 篇</span><span>${pct}%</span></div><progress max="${stats.total}" value="${stats.learned}" aria-label="已学习诗词进度">${stats.learned} / ${stats.total}</progress><div class="growth-caption"><span>正在学习 ${stats.learning} 篇</span><span>收藏 ${stats.favorites} 篇</span></div></div></section>${learning.warning ? `<p class="storage-note storage-warning" role="status">${escape(learning.warning)}</p>` : ''}`;
   }
   function studyPanel(poem) {
     const r = learning.get(poem.id);
     const encouragement = r.status === 'learned' ? '真棒！你又和一首诗成为了朋友。过几天再读读，诗意会记得更牢。' : r.status === 'learning' ? '小小诗人，已经迈出了第一步！一句一句慢慢读，期待你的新发现。' : '准备好了吗？读一读、想一想，让这首诗成为你的新朋友。';
-    return `<div class="study-heading"><div><span class="eyebrow">这首诗的小脚印</span><h2>${statusLabels[r.status]}</h2></div>${favoriteButton(poem)}</div><p class="study-encouragement">${encouragement}</p><div class="study-controls" role="group" aria-label="设置学习状态"><button data-status="learning" aria-pressed="${r.status === 'learning'}">${icon('leaf')}正在学习</button><button data-status="learned" aria-pressed="${r.status === 'learned'}">${icon('check')}已学习</button><button data-status="unstarted" class="reset-study" aria-pressed="${r.status === 'unstarted'}">未标记</button></div><div class="study-times">${timeMarkup('首次开始', r.startedAt)}${timeMarkup(r.status === 'learned' ? '最近学完' : '上次学完', r.learnedAt)}${timeMarkup('状态更新', r.changedAt)}${r.favorite ? timeMarkup('收藏于', r.favoriteAt) : ''}</div>`;
+    return `<div class="study-heading"><div><span class="eyebrow">这首诗的小脚印</span><h2>${statusLabels[r.status]}</h2></div>${favoriteButton(poem)}</div><p class="study-encouragement">${encouragement}</p><div class="study-controls" role="group" aria-label="设置学习状态"><button data-status="learning" aria-pressed="${r.status === 'learning'}">${icon('leaf')}正在学习</button><button data-status="learned" aria-pressed="${r.status === 'learned'}">${icon('check')}已学习</button><button data-status="unstarted" class="reset-study" aria-pressed="${r.status === 'unstarted'}">还没学</button></div><div class="study-times">${timeMarkup('首次开始', r.startedAt)}${timeMarkup(r.status === 'learned' ? '最近学完' : '上次学完', r.learnedAt)}${timeMarkup('状态更新', r.changedAt)}${r.favorite ? timeMarkup('收藏于', r.favoriteAt) : ''}</div>`;
   }
   function updateNavigation() {
     const stats = learning.summary();
@@ -187,7 +187,7 @@
   }
   function refreshLearning() {
     const progress = document.querySelector('#progress-panel');
-    if (progress) progress.innerHTML = progressPanel();
+    if (progress) progress.innerHTML = progressPanel(!currentPoem);
     if (currentPoem) {
       const focusedStatus = document.activeElement?.dataset.status;
       const focusedFavorite = document.activeElement?.dataset.favorite;
@@ -221,7 +221,7 @@
       if (!result.changed) {showFeedback('已经记下这个状态啦，继续享受读诗吧。'); return;}
       refreshLearning();
       const stats = learning.summary();
-      const message = result.record.status === 'learned' ? `真棒！已学会 ${stats.learned} / ${stats.total} 篇，每一小步都值得庆祝！` : result.record.status === 'learning' ? '新的一步开始啦！慢慢读，期待你与诗里的世界相遇。' : '已改回未标记。按照自己的节奏，随时重新出发。';
+      const message = result.record.status === 'learned' ? `真棒！已学会 ${stats.learned} / ${stats.total} 篇，每一小步都值得庆祝！` : result.record.status === 'learning' ? '新的一步开始啦！慢慢读，期待你与诗里的世界相遇。' : '已改为“还没学”。准备好了，就再来读一读吧。';
       showFeedback(message, result.record.status === 'learned');
     }));
   }
@@ -257,6 +257,12 @@
   document.querySelector('#close-help').addEventListener('click',()=>dialog.close());
   document.querySelector('#start-reading').addEventListener('click',()=>dialog.close());
   dialog.addEventListener('click',event=>{if(event.target===dialog){const r=dialog.getBoundingClientRect();if(event.clientX<r.left||event.clientX>r.right||event.clientY<r.top||event.clientY>r.bottom)dialog.close();}});
+  const contactDialog = document.querySelector('#contact-dialog');
+  document.querySelector('#contact-button').addEventListener('click',()=>contactDialog.showModal());
+  document.querySelector('#close-contact').addEventListener('click',()=>contactDialog.close());
+  contactDialog.addEventListener('click',event=>{
+    if(event.target===contactDialog){const r=contactDialog.getBoundingClientRect();if(event.clientX<r.left||event.clientX>r.right||event.clientY<r.top||event.clientY>r.bottom)contactDialog.close();}
+  });
   window.addEventListener('hashchange',()=>route());
   window.addEventListener('storage', event => {
     if (event.key === window.PoetryPractice.KEY || event.key === null) practice.sync();
