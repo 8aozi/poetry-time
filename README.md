@@ -1,5 +1,6 @@
 # 诗词拾光
 > hust华中科技大学 26fall软件工程小组项目 <br>
+
 面向儿童的古诗词启蒙平台，收录《义务教育语文课程标准（2022 年版）》小学阶段 **75 篇**诗词。暖米色与草木绿界面，支持桌面、手机和键盘操作。
 
 **[打开公开网站](https://8aozi.github.io/poetry-time/) · [反馈问题](https://github.com/8aozi/poetry-time/issues) · [Gitee 项目](https://gitee.com/lgy3417203301/SEteam26fall)**
